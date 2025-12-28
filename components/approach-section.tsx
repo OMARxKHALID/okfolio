@@ -53,6 +53,7 @@ export function ApproachSection() {
 
   return (
     <section
+      id="approach-section"
       ref={sectionRef}
       className="min-h-screen bg-surface-dark flex flex-col justify-center px-6 md:px-4 py-20 md:py-24 relative"
     >
@@ -61,7 +62,7 @@ export function ApproachSection() {
           {lines.map((line, index) => (
             <div key={index} className="overflow-hidden">
               <h2
-                className={`general-title approach-line ${line.color} leading-[0.85] text-4xl md:text-6xl lg:text-8xl`}
+                className={`general-title approach-line ${line.color} leading-[1] text-4xl md:text-6xl lg:text-8xl`}
               >
                 {line.text}
               </h2>

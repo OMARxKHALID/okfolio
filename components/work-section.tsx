@@ -43,7 +43,11 @@ export function WorkSection() {
   );
 
   return (
-    <div id="work" ref={triggerRef} className="overflow-hidden relative">
+    <div
+      id="work-section"
+      ref={triggerRef}
+      className="overflow-hidden relative"
+    >
       <div className="absolute inset-0 bg-cream" />
 
       <div
@@ -103,7 +107,10 @@ export function WorkSection() {
         </div>
       </div>
 
-      <div className="md:hidden min-h-screen bg-cream px-4 py-16">
+      <div
+        id="work-section-mobile"
+        className="md:hidden min-h-screen bg-cream px-4 py-16"
+      >
         <div className="mb-12">
           <span className="text-brown-mid font-bold tracking-widest text-xs mb-4 block">
             {PORTFOLIO_CONTENT.work.badge}

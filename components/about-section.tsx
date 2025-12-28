@@ -58,8 +58,8 @@ export function AboutSection() {
 
   return (
     <section
+      id="about-section"
       ref={sectionRef}
-      id="about"
       className="min-h-screen h-dvh flex flex-col items-center justify-center bg-brown-red px-6 md:px-4 py-16 md:py-0 relative z-10"
     >
       <div className="max-w-6xl text-center">

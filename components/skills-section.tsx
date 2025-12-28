@@ -42,13 +42,14 @@ export function SkillsSection() {
 
   return (
     <section
+      id="skills-section"
       ref={containerRef}
       className="py-24 md:py-40 bg-cream px-6 border-b border-brown-dark/5"
     >
       <div className="container mx-auto max-w-7xl">
         <div className="skills-header flex flex-col md:flex-row justify-between items-end mb-24 pb-8 border-b border-brown-dark/10">
           <div>
-            <span className="text-brown-mid font-display uppercase tracking-widest text-sm mb-4 block">
+            <span className="text-brown-mid font-display uppercase tracking-widest text-md mb-4 block">
               Capability
             </span>
             <h2 className="text-6xl md:text-8xl font-display font-bold text-brown-dark uppercase leading-[0.8]">
@@ -57,7 +58,7 @@ export function SkillsSection() {
               Stack
             </h2>
           </div>
-          <p className="font-sans text-brown-dark/70 max-w-md mt-8 md:mt-0 text-lg leading-relaxed">
+          <p className="font-sans text-white/70 max-w-md mt-8 md:mt-0 text-xl leading-relaxed">
             A carefully cultivated set of technologies and methodologies
             designed for high-performance creative engineering.
           </p>
@@ -75,7 +76,7 @@ export function SkillsSection() {
 
               <div className="relative z-10">
                 <span className="text-[10px] uppercase tracking-widest text-brown-mid/60 mb-2 block">
-                  {skill.category}
+                  {skill.level}
                 </span>
                 <h3 className="font-display text-2xl font-bold text-brown-dark leading-none group-hover:translate-x-2 transition-transform duration-300">
                   {skill.name}
