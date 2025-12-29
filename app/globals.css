@@ -167,9 +167,11 @@
 
 @layer utilities {
   .general-title {
-    @apply font-heading uppercase text-4xl md:text-6xl lg:text-8xl xl:text-9xl;
+    font-family: "Antonio", "Impact", "sans-serif";
+    @apply uppercase text-4xl md:text-6xl lg:text-8xl xl:text-9xl;
     letter-spacing: -0.35vw;
   }
+
   .font-paragraph {
     @apply font-sans text-base leading-relaxed;
   }

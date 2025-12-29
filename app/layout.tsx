@@ -1,7 +1,6 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
 import { Antonio, Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { CustomCursor } from "@/components/custom-cursor";
 import { GL } from "@/components/gl";
@@ -93,7 +92,6 @@ export default function RootLayout({
         </div>
         <CustomCursor />
         {children}
-        <Analytics />
       </body>
     </html>
   );

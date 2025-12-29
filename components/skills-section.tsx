@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -66,26 +66,60 @@ export function SkillsSection() {
 
         <div className="skills-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-px bg-brown-dark/10 border border-brown-dark/10">
           {SKILLS.map((skill) => (
-            <div
-              key={skill.name}
-              className="skill-item bg-cream hover:bg-white transition-colors duration-500 p-8 aspect-square flex flex-col justify-between group relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-gold/20 to-transparent rounded-bl-full translate-x-12 -translate-y-12 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
-
-              <div className="w-2 h-2 rounded-full bg-brown-mid group-hover:bg-gold transition-colors"></div>
-
-              <div className="relative z-10">
-                <span className="text-[10px] uppercase tracking-widest text-brown-mid/60 mb-2 block">
-                  {skill.level}
-                </span>
-                <h3 className="font-display text-2xl font-bold text-brown-dark leading-none group-hover:translate-x-2 transition-transform duration-300">
-                  {skill.name}
-                </h3>
-              </div>
-            </div>
+            <SkillCard key={skill.name} skill={skill} />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function SkillCard({ skill }: { skill: { name: string; level: string } }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      className="skill-item bg-cream hover:bg-white transition-colors duration-500 p-8 aspect-square flex flex-col justify-between relative overflow-hidden cursor-pointer"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* 1. The Gradient Corner Blob */}
+      <div
+        className="absolute top-0 right-0 w-24 h-24 rounded-bl-full pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom right, hsl(35, 52%, 65%, 0.2), transparent)",
+          transform: isHovered ? "translate(0, 0)" : "translate(48px, -48px)",
+          transition: "transform 500ms ease-out",
+        }}
+      />
+
+      {/* 2. The Dot Color Change */}
+      <div
+        className="w-2 h-2 rounded-full relative z-10"
+        style={{
+          backgroundColor: isHovered
+            ? "hsl(35, 52%, 65%)"
+            : "rgb(163, 107, 51)",
+          transition: "background-color 300ms",
+        }}
+      />
+
+      {/* 3. The Text Nudge */}
+      <div className="relative z-10">
+        <span className="text-[10px] uppercase tracking-widest text-brown-mid/60 mb-2 block">
+          {skill.level}
+        </span>
+        <h3
+          className="font-display text-2xl font-bold text-brown-dark leading-none"
+          style={{
+            transform: isHovered ? "translateX(8px)" : "translateX(0)",
+            transition: "transform 300ms ease-out",
+          }}
+        >
+          {skill.name}
+        </h3>
+      </div>
+    </div>
   );
 }

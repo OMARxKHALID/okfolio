@@ -61,7 +61,7 @@ export default function CategoryPage() {
 
   if (!category) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-cream">
+      <div className="min-h-screen flex items-center justify-center bg-cream ">
         <div className="text-center">
           <h1 className="general-title text-brown-dark mb-4 text-4xl md:text-6xl">
             404

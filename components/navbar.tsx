@@ -2,7 +2,7 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export function Navbar() {
   const navRef = useRef<HTMLElement>(null);
@@ -66,32 +66,11 @@ export function Navbar() {
 
         <div className="flex flex-col items-end space-y-1">
           {NAV_ITEMS.map((item) => (
-            <a
+            <NavLink
               key={item.label}
-              href={item.href}
-              onClick={(e) => handleScrollTo(e, item.href)}
-              className="
-                relative
-                inline-block
-                overflow-hidden
-                font-display
-                uppercase
-                text-md
-                tracking-tight
-                leading-none
-                group
-              "
-            >
-              {/* Default text */}
-              <span className="inline-block transition-transform duration-300 group-hover:-translate-y-full">
-                {item.label}
-              </span>
-
-              {/* Hover text */}
-              <span className="absolute top-0 left-0 inline-block translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-gold">
-                {item.label}
-              </span>
-            </a>
+              item={item}
+              handleScrollTo={handleScrollTo}
+            />
           ))}
         </div>
       </div>
@@ -101,5 +80,48 @@ export function Navbar() {
         Menu
       </button>
     </nav>
+  );
+}
+
+function NavLink({
+  item,
+  handleScrollTo,
+}: {
+  item: { label: string; href: string };
+  handleScrollTo: (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => void;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <a
+      href={item.href}
+      onClick={(e) => handleScrollTo(e, item.href)}
+      className="font-display uppercase text-md tracking-tight leading-none relative group overflow-hidden inline-block"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <span
+        className="inline-block"
+        style={{
+          transform: isHovered ? "translateY(-100%)" : "translateY(0)",
+          transition: "transform 300ms cubic-bezier(0.6, 0, 0.4, 1)",
+        }}
+      >
+        {item.label}
+      </span>
+      <span
+        className="absolute top-0 left-0 inline-block text-gold"
+        style={{
+          transform: isHovered ? "translateY(0)" : "translateY(100%)",
+          transition: "transform 300ms cubic-bezier(0.6, 0, 0.4, 1)",
+        }}
+        aria-hidden="true"
+      >
+        {item.label}
+      </span>
+    </a>
   );
 }
