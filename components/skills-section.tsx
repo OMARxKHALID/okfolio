@@ -58,7 +58,7 @@ export function SkillsSection() {
               Stack
             </h2>
           </div>
-          <p className="font-sans text-white/70 max-w-md mt-8 md:mt-0 text-xl leading-relaxed">
+          <p className="font-sans text-brown-dark/70 max-w-md mt-8 md:mt-0 text-xl leading-relaxed">
             A carefully cultivated set of technologies and methodologies
             designed for high-performance creative engineering.
           </p>
@@ -74,12 +74,16 @@ export function SkillsSection() {
   );
 }
 
-function SkillCard({ skill }: { skill: { name: string; level: string } }) {
+function SkillCard({
+  skill,
+}: {
+  skill: { name: string; level: string; iconName?: string };
+}) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className="skill-item bg-cream hover:bg-white transition-colors duration-500 p-8 aspect-square flex flex-col justify-between relative overflow-hidden cursor-pointer"
+      className="skill-item bg-cream hover:bg-white transition-colors duration-500 p-6 md:p-8 aspect-square flex flex-col justify-between relative overflow-hidden cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -93,6 +97,61 @@ function SkillCard({ skill }: { skill: { name: string; level: string } }) {
           transition: "transform 500ms ease-out",
         }}
       />
+
+      {/* Icon Section - Large and Prominent */}
+      {skill.iconName && (
+        <div className="relative z-10 flex items-center justify-center mb-4 flex-1 min-h-[100px] md:min-h-[120px]">
+          <div
+            className="relative transition-all duration-300"
+            style={{
+              transform: isHovered
+                ? "scale(1.15) translateY(-4px)"
+                : "scale(1)",
+              opacity: isHovered ? 1 : 0.85,
+            }}
+          >
+            <img
+              src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${skill.iconName}.svg`}
+              alt={skill.name}
+              className="w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain"
+              loading="lazy"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                const iconName = skill.iconName?.toLowerCase();
+                let attempts = parseInt(target.dataset.attempts || "0");
+                attempts++;
+
+                // Icon name alternatives mapping
+                const alternatives: Record<string, string[]> = {
+                  adobecreativecloud: ["adobe", "adobecreativecloud"],
+                  adobephotoshop: ["adobephotoshop"],
+                  adobeillustrator: ["adobeillustrator"],
+                  adobeaftereffects: ["adobeaftereffects"],
+                  nodedotjs: ["nodejs", "nodedotjs"],
+                };
+
+                // Try alternative names with jsDelivr
+                if (
+                  iconName &&
+                  alternatives[iconName] &&
+                  attempts <= alternatives[iconName].length
+                ) {
+                  const altName = alternatives[iconName][attempts - 1];
+                  target.dataset.attempts = attempts.toString();
+                  target.src = `https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${altName}.svg`;
+                } else if (iconName && attempts === 1) {
+                  // Try simpleicons.org CDN as fallback
+                  target.dataset.attempts = attempts.toString();
+                  target.src = `https://cdn.simpleicons.org/${iconName}`;
+                } else {
+                  // Hide if all attempts failed
+                  target.style.display = "none";
+                }
+              }}
+            />
+          </div>
+        </div>
+      )}
 
       {/* 2. The Dot Color Change */}
       <div
@@ -111,7 +170,7 @@ function SkillCard({ skill }: { skill: { name: string; level: string } }) {
           {skill.level}
         </span>
         <h3
-          className="font-display text-2xl font-bold text-brown-dark leading-none"
+          className="font-display text-lg md:text-xl lg:text-2xl font-bold text-brown-dark leading-none"
           style={{
             transform: isHovered ? "translateX(8px)" : "translateX(0)",
             transition: "transform 300ms ease-out",

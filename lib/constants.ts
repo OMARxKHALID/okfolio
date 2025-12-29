@@ -184,43 +184,98 @@ export const PROJECTS: Project[] = [
 ];
 
 export const SKILLS: Skill[] = [
+  // EXPERT Level
   {
     name: "React / Next.js",
     level: "EXPERT",
     color: "from-blue-400 to-cyan-500",
+    iconName: "react",
   },
-  { name: "TypeScript", level: "EXPERT", color: "from-blue-600 to-indigo-600" },
   {
-    name: "GSAP / Motion",
-    level: "ADVANCED",
-    color: "from-green-400 to-emerald-600",
+    name: "TypeScript",
+    level: "EXPERT",
+    color: "from-blue-600 to-indigo-600",
+    iconName: "typescript",
   },
-  { name: "Tailwind CSS", level: "EXPERT", color: "from-sky-400 to-blue-500" },
+  {
+    name: "Tailwind CSS",
+    level: "EXPERT",
+    color: "from-sky-400 to-blue-500",
+    iconName: "tailwindcss",
+  },
+  {
+    name: "Adobe Creative Cloud",
+    level: "EXPERT",
+    color: "from-red-500 to-pink-600",
+    iconName: "adobecreativecloud",
+  },
+  {
+    name: "Photoshop",
+    level: "EXPERT",
+    color: "from-blue-500 to-cyan-600",
+    iconName: "adobephotoshop",
+  },
+  // ADVANCED Level
   {
     name: "UI Architecture",
     level: "ADVANCED",
     color: "from-purple-500 to-pink-500",
+    iconName: "figma",
   },
-  { name: "Performance", level: "EXPERT", color: "from-orange-400 to-red-500" },
   {
-    name: "Design Systems",
+    name: "Illustrator",
     level: "ADVANCED",
-    color: "from-amber-400 to-yellow-600",
+    color: "from-orange-500 to-red-600",
+    iconName: "adobeillustrator",
+  },
+  {
+    name: "After Effects",
+    level: "ADVANCED",
+    color: "from-purple-600 to-indigo-700",
+    iconName: "adobeaftereffects",
+  },
+  {
+    name: "Node.js",
+    level: "ADVANCED",
+    color: "from-green-500 to-emerald-600",
+    iconName: "nodedotjs",
+  },
+  {
+    name: "Git",
+    level: "ADVANCED",
+    color: "from-orange-600 to-red-700",
+    iconName: "git",
+  },
+  {
+    name: "HTML5",
+    level: "ADVANCED",
+    color: "from-orange-400 to-red-500",
+    iconName: "html5",
+  },
+  // INTERMEDIATE Level
+  {
+    name: "GSAP / Motion",
+    level: "INTERMEDIATE",
+    color: "from-green-400 to-emerald-600",
+    iconName: "greensock",
   },
   {
     name: "WebGL / Three.js",
     level: "INTERMEDIATE",
     color: "from-indigo-400 to-purple-600",
+    iconName: "threedotjs",
   },
   {
-    name: "Accessibility",
-    level: "ADVANCED",
-    color: "from-teal-400 to-emerald-500",
-  },
-  {
-    name: "Brand Strategy",
+    name: "JavaScript",
     level: "INTERMEDIATE",
-    color: "from-rose-400 to-red-600",
+    color: "from-yellow-500 to-yellow-600",
+    iconName: "javascript",
+  },
+  {
+    name: "Python",
+    level: "INTERMEDIATE",
+    color: "from-yellow-400 to-orange-500",
+    iconName: "python",
   },
 ];
 
@@ -250,24 +305,24 @@ export const TESTIMONIALS: Testimonial[] = [
 
 // Map work categories to tech stack images
 export const CATEGORY_TECH_MAP: Record<string, string> = {
-  "illustrator": "/images/react2.webp",
+  illustrator: "/images/react2.webp",
   "2d-animation": "/images/next2.webp",
   "packaging-design": "/images/typescript.webp",
   "ui-ux": "/images/javascript.webp",
   "after-effects": "/images/react2.webp",
-  "photoshop": "/images/next2.webp",
+  photoshop: "/images/next2.webp",
 };
 
 // Map skills to tech stack images
 export const SKILL_TECH_MAP: Record<string, string> = {
   "React / Next.js": "/images/react2.webp",
-  "TypeScript": "/images/typescript.webp",
+  TypeScript: "/images/typescript.webp",
   "GSAP / Motion": "/images/javascript.webp",
   "Tailwind CSS": "/images/javascript.webp",
   "UI Architecture": "/images/next2.webp",
-  "Performance": "/images/react2.webp",
+  Performance: "/images/react2.webp",
   "Design Systems": "/images/typescript.webp",
   "WebGL / Three.js": "/images/react2.webp",
-  "Accessibility": "/images/next2.webp",
+  Accessibility: "/images/next2.webp",
   "Brand Strategy": "/images/typescript.webp",
 };
