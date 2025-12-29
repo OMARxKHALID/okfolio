@@ -13,7 +13,6 @@ if (typeof window !== "undefined") {
 }
 
 export function WorkSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -109,20 +108,20 @@ export function WorkSection() {
 
       <div
         id="work-section-mobile"
-        className="md:hidden min-h-screen bg-cream px-4 py-16"
+        className="md:hidden min-h-screen bg-cream px-4 py-12 relative z-10"
       >
-        <div className="mb-12">
+        <div className="mb-12 pt-8">
           <span className="text-brown-mid font-bold tracking-widest text-xs mb-4 block">
             {PORTFOLIO_CONTENT.work.badge}
           </span>
-          <h2 className="general-title text-brown-dark leading-[0.85] mb-6 text-3xl">
+          <h2 className="general-title text-brown-dark leading-[0.9] mb-6 text-4xl sm:text-5xl">
             CRAFTING
             <br />
             DIGITAL
             <br />
             LEGACIES
           </h2>
-          <p className="font-paragraph text-brown-dark/70 text-sm">
+          <p className="font-paragraph text-brown-dark/70 text-sm sm:text-base">
             A collection of work across multiple creative disciplines. Select a
             category to explore.
           </p>

@@ -1,9 +1,10 @@
 import type React from "react";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
+import type { Viewport } from "next";
 import { Antonio, Inter } from "next/font/google";
 import "./globals.css";
 import { CustomCursor } from "@/components/custom-cursor";
-import { GL } from "@/components/gl";
+import { ConditionalGL } from "@/components/conditional-gl";
 
 const antonio = Antonio({
   subsets: ["latin"],
@@ -20,32 +21,33 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Omar Khalid — Creative Developer & Designer",
+  title: "Aroojaatir — Creative Designer & Animator",
   description:
-    "Award-winning creative portfolio showcasing high-end digital experiences. Senior Frontend Engineer specializing in motion design, React, Next.js, and creative interaction.",
+    "Award-winning creative portfolio showcasing high-end digital experiences. Creative Designer & Animator specializing in motion design, design, and creative interaction.",
   keywords: [
-    "Creative Developer",
+    "Creative Designer",
+    "Animator",
     "Designer",
-    "Frontend Engineer",
+    "Animator",
     "Portfolio",
     "Motion Design",
-    "React",
-    "Next.js",
+    "Design",
+    "Animation",
   ],
-  authors: [{ name: "Omar Khalid" }],
-  creator: "Omar Khalid",
-  publisher: "Omar Khalid",
+  authors: [{ name: "Aroojaatir" }],
+  creator: "Aroojaatir",
+  publisher: "Aroojaatir",
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Omar Khalid — Creative Developer & Designer",
+    title: "Aroojaatir — Creative Designer & Animator",
     description:
       "Crafting high-end digital experiences where motion meets strategy.",
-    siteName: "Omar Khalid Portfolio",
+    siteName: "Aroojaatir Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Omar Khalid — Creative Developer & Designer",
+    title: "Aroojaatir — Creative Designer & Animator",
     description:
       "Crafting high-end digital experiences where motion meets strategy.",
   },
@@ -87,9 +89,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${antonio.variable} ${inter.variable}`}>
       <body className="font-sans antialiased md:cursor-none">
-        <div id="webgl-root">
-          <GL />
-        </div>
+        <ConditionalGL />
         <CustomCursor />
         {children}
       </body>

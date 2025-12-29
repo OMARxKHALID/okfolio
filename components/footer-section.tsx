@@ -1,17 +1,56 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import gsap from "gsap"
-import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ArrowRight, Github, Twitter, Linkedin, Instagram } from "lucide-react"
+import { useRef, useState, useEffect } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, Github, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Canvas } from "@react-three/fiber";
+import { TechScene } from "@/components/tech-stack";
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
 }
 
 export function FooterSection() {
-  const containerRef = useRef<HTMLElement>(null)
+  const containerRef = useRef<HTMLElement>(null);
+  const [isActive, setIsActive] = useState(true);
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
+  const [canvasElement, setCanvasElement] = useState<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    if (!canvasContainerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsActive(entry.isIntersecting);
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px",
+      }
+    );
+
+    observer.observe(canvasContainerRef.current);
+
+    const handleScroll = () => {
+      if (canvasContainerRef.current) {
+        const rect = canvasContainerRef.current.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        setIsActive(isVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useGSAP(
     () => {
@@ -25,7 +64,7 @@ export function FooterSection() {
         opacity: 0,
         duration: 1.2,
         ease: "power4.out",
-      })
+      });
 
       // Content Fade In
       gsap.from(".footer-content", {
@@ -37,7 +76,7 @@ export function FooterSection() {
         opacity: 0,
         duration: 1,
         stagger: 0.1,
-      })
+      });
 
       // Social Icons Scale
       gsap.from(".social-icon", {
@@ -50,19 +89,46 @@ export function FooterSection() {
         stagger: 0.1,
         duration: 0.8,
         ease: "back.out(1.7)",
-      })
+      });
     },
-    { scope: containerRef },
-  )
+    { scope: containerRef }
+  );
 
   return (
-    <footer ref={containerRef} className="bg-surface-dark py-16 md:py-24 px-6 md:px-4 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <footer
+      ref={containerRef}
+      className="bg-surface-dark py-16 md:py-24 px-6 md:px-4 overflow-hidden relative"
+    >
+      {/* 3D Balls Canvas */}
+      <div
+        ref={canvasContainerRef}
+        className="absolute inset-0 w-full h-full opacity-30 z-[1] pointer-events-none"
+      >
+        <Canvas
+          shadows
+          gl={{ alpha: true, stencil: false, depth: true, antialias: true }}
+          camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
+          onCreated={(state) => {
+            state.gl.toneMappingExposure = 1.5
+            // Store canvas element reference
+            if (state.gl.domElement) {
+              setCanvasElement(state.gl.domElement)
+            }
+          }}
+          className="w-full h-full pointer-events-auto"
+        >
+          <TechScene isActive={isActive} canvasElement={canvasElement} />
+        </Canvas>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-[2] pointer-events-auto">
         <div className="mb-16 md:mb-24 text-center">
           <h2 className="footer-title general-title text-cream mb-2 md:mb-4 text-4xl md:text-6xl lg:text-8xl">
             LET'S START A
           </h2>
-          <h2 className="footer-title general-title text-gold text-4xl md:text-6xl lg:text-8xl">PROJECT TOGETHER</h2>
+          <h2 className="footer-title general-title text-gold text-4xl md:text-6xl lg:text-8xl">
+            PROJECT TOGETHER
+          </h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-start">
@@ -70,7 +136,9 @@ export function FooterSection() {
           <div className="footer-content bg-cream/5 backdrop-blur-xl border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden group">
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-gold/10 rounded-full blur-[80px]" />
 
-            <h3 className="text-2xl md:text-3xl font-heading text-cream mb-6 md:mb-8">GET IN TOUCH</h3>
+            <h3 className="text-2xl md:text-3xl font-heading text-cream mb-6 md:mb-8">
+              GET IN TOUCH
+            </h3>
 
             <div className="relative mb-8 md:mb-12">
               <input
@@ -163,5 +231,5 @@ export function FooterSection() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

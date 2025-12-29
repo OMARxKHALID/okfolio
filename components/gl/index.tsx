@@ -1,4 +1,5 @@
 "use client";
+
 import { Effects } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Particles } from "./particles";
@@ -12,12 +13,12 @@ export const GL = () => {
   const timeScale = 1.0;
   const focus = 3.8;
   const aperture = 1.79;
-  const pointSize = 10.0;
-  const opacity = 0.8;
+  const pointSize = 35.0;
+  const opacity = 0.6; // Reduced from 0.8 to improve text visibility
   const planeScale = 10.0;
   const size = 512;
-  const vignetteDarkness = 1.5;
-  const vignetteOffset = 0.4;
+  const vignetteDarkness = 1.2; // Reduced from 1.5 to make center brighter
+  const vignetteOffset = 0.5; // Increased from 0.4 to keep center area brighter
   const useManualTime = false;
   const manualTime = 0;
 

@@ -82,10 +82,7 @@ export default function CategoryPage() {
   }
 
   return (
-    <div
-      className="min-h-screen"
-      style={{ backgroundColor: "hsl(35, 62%, 95%)" }}
-    >
+    <div className="min-h-screen bg-cream relative z-10">
       {/* Back Button */}
       <div className="fixed top-6 left-6 md:top-10 md:left-10 z-50">
         <button
@@ -102,13 +99,15 @@ export default function CategoryPage() {
         ref={heroRef}
         className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center px-6 md:px-12 overflow-hidden"
       >
-        <div className="absolute inset-0 opacity-10">
-          <Image
-            src={category.image || "/placeholder.svg"}
-            alt={category.title}
-            fill
-            className="object-cover"
-          />
+        <div className="absolute inset-0 opacity-10 flex items-center justify-center py-8 md:py-12">
+          <div className="relative w-full max-w-3xl h-full max-h-[60vh] md:max-h-[65vh]">
+            <Image
+              src={category.image || "/placeholder.svg"}
+              alt={category.title}
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
         <div className="relative z-10 text-center max-w-5xl">
           <div className="category-hero-title mb-6 md:mb-8">
@@ -119,7 +118,7 @@ export default function CategoryPage() {
               {category.title}
             </h1>
           </div>
-          <p className="category-hero-description font-paragraph text-brown-dark/70 text-base md:text-xl max-w-2xl mx-auto">
+          <p className="category-hero-description font-paragraph text-brown-dark/75 text-base md:text-xl max-w-2xl mx-auto">
             {category.description}
           </p>
         </div>

@@ -2,26 +2,26 @@ import type { Project, Skill, Testimonial, Category } from "@/types";
 
 export const PORTFOLIO_CONTENT = {
   artist: {
-    name: "OMAR KHALID",
-    firstName: "OMAR",
-    lastName: "KHALID",
+    name: "AROOJ AATIR",
+    firstName: "AROOJ",
+    lastName: "AATIR",
     logo: "OK",
-    tagline: "CREATIVE DEVELOPER & DESIGNER",
+    tagline: "CREATIVE DESIGNER & ANIMATOR",
     location: "Berlin, Germany",
     availability: "Available Worldwide",
   },
   hero: {
-    badge: "CREATIVE DEVELOPER & DESIGNER",
+    badge: "CREATIVE DESIGNER & ANIMATOR",
     description:
-      "Crafting high-end digital experiences where motion meets strategy. Senior Frontend Engineer specializing in creative interaction.",
+      "Crafting high-end digital experiences where motion meets strategy. Creative Designer & Animator specializing in creative interaction.",
     cta: "VIEW MY PROJECTS",
   },
   about: {
-    badge: "ABOUT OMAR",
+    badge: "ABOUT AROOJ",
     headline:
       "Design is the silent ambassador of your brand. I make it speak volumes.",
     description:
-      "I bridge the gap between complex engineering and poetic design. With a decade of experience in the industry, I help brands tell their stories through meaningful interactions and performant, scalable front-end architectures.",
+      "I bridge the gap between complex design and poetic animation. With a decade of experience in the industry, I help brands tell their stories through meaningful interactions and performant, scalable digital experiences.",
   },
   approach: {
     lines: [
@@ -247,3 +247,27 @@ export const TESTIMONIALS: Testimonial[] = [
     rotation: -4,
   },
 ];
+
+// Map work categories to tech stack images
+export const CATEGORY_TECH_MAP: Record<string, string> = {
+  "illustrator": "/images/react2.webp",
+  "2d-animation": "/images/next2.webp",
+  "packaging-design": "/images/typescript.webp",
+  "ui-ux": "/images/javascript.webp",
+  "after-effects": "/images/react2.webp",
+  "photoshop": "/images/next2.webp",
+};
+
+// Map skills to tech stack images
+export const SKILL_TECH_MAP: Record<string, string> = {
+  "React / Next.js": "/images/react2.webp",
+  "TypeScript": "/images/typescript.webp",
+  "GSAP / Motion": "/images/javascript.webp",
+  "Tailwind CSS": "/images/javascript.webp",
+  "UI Architecture": "/images/next2.webp",
+  "Performance": "/images/react2.webp",
+  "Design Systems": "/images/typescript.webp",
+  "WebGL / Three.js": "/images/react2.webp",
+  "Accessibility": "/images/next2.webp",
+  "Brand Strategy": "/images/typescript.webp",
+};
