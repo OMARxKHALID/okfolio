@@ -44,21 +44,21 @@ export function SkillsSection() {
     <section
       id="skills-section"
       ref={containerRef}
-      className="py-24 md:py-40 bg-cream px-6 border-b border-brown-dark/5"
+      className="py-24 md:py-40  px-6 border-b border-brown-dark/5"
     >
       <div className="container mx-auto max-w-7xl">
         <div className="skills-header flex flex-col md:flex-row justify-between items-end mb-24 pb-8 border-b border-brown-dark/10">
           <div>
-            <span className="text-brown-mid font-display uppercase tracking-widest text-md mb-4 block">
+            <span className="text-brown-mid font-display uppercase tracking-widest text-md mb-4 block drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] [text-shadow:_0_1px_10px_rgba(0,0,0,0.5)]">
               Capability
             </span>
-            <h2 className="text-6xl md:text-8xl font-display font-bold text-brown-dark uppercase leading-[0.8]">
+            <h2 className="text-6xl md:text-9xl font-display font-bold text-brown-dark uppercase leading-[0.8]">
               Tool
               <br />
               Stack
             </h2>
           </div>
-          <p className="font-sans text-brown-dark/70 max-w-md mt-8 md:mt-0 text-xl leading-relaxed">
+          <p className="font-sans text-cream/80 max-w-md mt-8 md:mt-0 text-xl leading-relaxed  drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] [text-shadow:_0_1px_10px_rgba(0,0,0,0.5)]">
             A carefully cultivated set of technologies and methodologies
             designed for high-performance creative engineering.
           </p>
